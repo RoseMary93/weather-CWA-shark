@@ -1,0 +1,543 @@
+:root {
+    /* 深海色票 */
+    --sea-dark: #001e36;
+    --sea-medium: #053a5f;
+    --sea-light: #166d98;
+    --atlantis-gold: #FFD700;
+    --neon-cyan: #00f2ff;
+    --bubble-white: rgba(255, 255, 255, 0.3);
+    --glass-bg: rgba(10, 30, 50, 0.65);
+    --glass-border: rgba(0, 242, 255, 0.3);
+    --text-light: #e0f7fa;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    /* 🌟 更換字體：中文優先 Noto Sans TC，英文/數字/主要標題使用 Electrolize */
+    font-family: 'Electrolize', 'Noto Sans TC', sans-serif;
+    background: linear-gradient(180deg, var(--sea-medium) 0%, var(--sea-dark) 100%);
+    min-height: 100vh;
+    color: var(--text-light);
+    overflow-x: hidden;
+    padding-bottom: 20px;
+    position: relative;
+}
+
+/* 🌟 網站 H1 標題風格設定 */
+.site-title {
+    color: var(--neon-cyan);
+    font-size: 2.5rem;
+    font-weight: 900;
+    text-align: center;
+    margin: 20px auto 0;
+    padding: 0 20px;
+    /* 霓虹光暈效果 */
+    text-shadow: 0 0 15px rgba(0, 242, 255, 0.8), 0 0 5px rgba(0, 242, 255, 0.5);
+    letter-spacing: 5px;
+    text-transform: uppercase;
+}
+
+/* 背景氣泡動畫 */
+.bubbles {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    overflow: hidden;
+    pointer-events: none;
+}
+
+.bubble {
+    position: absolute;
+    bottom: -20px;
+    background: radial-gradient(circle at 30% 30%, rgba(255, 255, 255, 0.8), rgba(255, 255, 255, 0.1));
+    border-radius: 50%;
+    animation: rise 8s infinite ease-in;
+    opacity: 0.6;
+}
+
+@keyframes rise {
+    0% {
+        bottom: -20px;
+        transform: translateX(0);
+    }
+
+    50% {
+        transform: translateX(20px);
+    }
+
+    100% {
+        bottom: 110vh;
+        transform: translateX(-20px);
+        opacity: 0;
+    }
+}
+
+/* 頂部狀態列 */
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px;
+    background: rgba(0, 10, 20, 0.4);
+    backdrop-filter: blur(8px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* 下拉選單：亞特蘭提斯石板風格 */
+.location-select-wrapper {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+.location-select {
+    appearance: none;
+    -webkit-appearance: none;
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--neon-cyan);
+    padding: 8px 15px;
+    /* 🌟 修正：改為對稱內距以利置中 */
+    border-radius: 12px;
+    font-weight: 900;
+    font-size: 1.1rem;
+    border: 2px solid var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+    font-family: inherit;
+    cursor: pointer;
+    outline: none;
+    transition: all 0.3s;
+    text-align: center;
+    /* 🌟 置中文字 */
+    text-align-last: center;
+    /* 🌟 確保選中項也置中 */
+}
+
+.location-select:focus {
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.5);
+}
+
+/* 移除絕對定位的錨點圖標，改用一般的下拉樣式或更簡潔的設計，以防擋住鄉鎮選單 */
+.update-pill {
+    font-size: 0.8rem;
+    color: var(--atlantis-gold);
+    background: rgba(0, 0, 0, 0.6);
+    padding: 6px 12px;
+    border-radius: 20px;
+    border: 1px solid var(--atlantis-gold);
+    text-shadow: 0 0 5px var(--atlantis-gold);
+}
+
+.container {
+    padding: 20px;
+    max-width: 600px;
+    /* 標題與內文間距調整 */
+    margin: 10px auto 0;
+}
+
+/* === 核心：今日焦點卡片 (潛水艙風格) === */
+.hero-card {
+    background: var(--glass-bg);
+    border-radius: 30px;
+    padding: 30px 25px;
+    text-align: center;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border);
+    margin-bottom: 25px;
+    position: relative;
+    overflow: hidden;
+}
+
+/* 頂部發光條 */
+.hero-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, transparent, var(--neon-cyan), transparent);
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.hero-period {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    background: var(--atlantis-gold);
+    color: var(--sea-dark);
+    padding: 2px 10px;
+    border-radius: 4px;
+    font-weight: 900;
+    font-size: 0.9rem;
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.hero-temp-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 15px;
+    margin: 20px 0;
+    text-shadow: 0 0 10px rgba(255, 255, 255, 0.3);
+}
+
+.hero-icon {
+    font-size: 5.5rem;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.4));
+    animation: float 3s infinite ease-in-out;
+}
+
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-15px);
+    }
+}
+
+.hero-temp {
+    font-size: 5rem;
+    font-weight: 900;
+    color: white;
+    line-height: 1;
+    /* 數字加上霓虹光暈 */
+    text-shadow: 0 0 20px rgba(0, 242, 255, 0.6);
+}
+
+.hero-desc {
+    font-size: 1.6rem;
+    color: var(--neon-cyan);
+    margin-bottom: 25px;
+    font-weight: bold;
+    letter-spacing: 2px;
+}
+
+/* === 裝備建議區 === */
+.advice-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 15px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px dashed var(--glass-border);
+}
+
+.advice-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 12px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.advice-icon {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.advice-text {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--atlantis-gold);
+    margin: 5px 0;
+}
+
+.advice-sub {
+    font-size: 0.8rem;
+    color: #aaa;
+}
+
+/* === 聲納預報區 === */
+.section-title {
+    font-size: 1.3rem;
+    color: var(--neon-cyan);
+    margin-bottom: 15px;
+    margin-left: 10px;
+    font-weight: 900;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.section-title::before {
+    content: '';
+    display: block;
+    width: 8px;
+    height: 8px;
+    background: var(--neon-cyan);
+    border-radius: 50%;
+    box-shadow: 0 0 10px var(--neon-cyan);
+}
+
+.scroll-container {
+    display: flex;
+    /* 🌟 讓卡片在空間足夠時置中 */
+    justify-content: center;
+    overflow-x: auto;
+    gap: 15px;
+    padding-bottom: 10px;
+    /* 移除內建捲軸 */
+    scrollbar-width: none;
+    -ms-overflow-style: none;
+    /* For IE and Edge */
+}
+
+.scroll-container::-webkit-scrollbar {
+    display: none;
+}
+
+.mini-card {
+    min-width: 140px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 20px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    flex-shrink: 0;
+    backdrop-filter: blur(5px);
+}
+
+.mini-time {
+    background: var(--sea-dark);
+    color: var(--neon-cyan);
+    padding: 4px 12px;
+    border-radius: 12px;
+    font-size: 0.8rem;
+    display: inline-block;
+    margin-bottom: 10px;
+    font-weight: bold;
+    border: 1px solid var(--neon-cyan);
+}
+
+.mini-icon {
+    font-size: 2.2rem;
+    margin: 5px 0 0;
+}
+
+/* 🌟 新增天氣描述的樣式 */
+.mini-weather-desc {
+    font-size: 0.9rem;
+    color: var(--atlantis-gold);
+    margin: 5px 0 8px;
+    font-weight: 700;
+}
+
+.mini-temp {
+    font-size: 1.2rem;
+    font-weight: 800;
+    color: white;
+    line-height: 1;
+}
+
+/* 🌟 新增降雨機率的樣式 */
+.mini-rain {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-top: 8px;
+    padding: 4px 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Loading 聲納畫面 */
+.loading-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: var(--sea-dark);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+    transition: opacity 0.5s ease;
+}
+
+/* 聲納波紋動畫 */
+.sonar-emitter {
+    width: 20px;
+    height: 20px;
+    background: var(--neon-cyan);
+    border-radius: 50%;
+    position: relative;
+}
+
+.sonar-wave {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    border: 2px solid var(--neon-cyan);
+    opacity: 0;
+    animation: sonar 2s infinite;
+}
+
+.sonar-wave:nth-child(1) {
+    animation-delay: 0s;
+}
+
+.sonar-wave:nth-child(2) {
+    animation-delay: 0.6s;
+}
+
+.sonar-wave:nth-child(3) {
+    animation-delay: 1.2s;
+}
+
+@keyframes sonar {
+    0% {
+        width: 0;
+        height: 0;
+        opacity: 1;
+    }
+
+    100% {
+        width: 200px;
+        height: 200px;
+        opacity: 0;
+    }
+}
+
+.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* 檢視切換按鈕 */
+.view-toggle {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin: 15px 0;
+    padding: 0 20px;
+}
+
+.toggle-btn {
+    padding: 10px 20px;
+    background: rgba(0, 0, 0, 0.3);
+    color: var(--neon-cyan);
+    border: 2px solid var(--neon-cyan);
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: bold;
+    transition: all 0.3s;
+    font-family: inherit;
+}
+
+.toggle-btn:hover {
+    background: rgba(0, 242, 255, 0.2);
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.3);
+}
+
+.toggle-btn.active {
+    background: var(--neon-cyan);
+    color: var(--sea-dark);
+    box-shadow: 0 0 15px rgba(0, 242, 255, 0.6);
+}
+
+/* 一週預報網格 */
+.weekly-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 12px;
+    padding: 15px;
+}
+
+/* 一週折線圖容器 */
+.chart-wrapper {
+    width: 100%;
+    height: 220px;
+    padding: 10px 15px;
+    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    border: 1px solid rgba(255, 255, 255, 0.06);
+    backdrop-filter: blur(4px);
+}
+
+.chart-wrapper canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.weekly-card {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 15px;
+    padding: 15px;
+    text-align: center;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(5px);
+    transition: all 0.3s;
+}
+
+.weekly-card:hover {
+    background: rgba(255, 255, 255, 0.15);
+    border-color: var(--neon-cyan);
+    box-shadow: 0 0 10px rgba(0, 242, 255, 0.2);
+}
+
+.weekly-date {
+    font-size: 0.85rem;
+    color: var(--atlantis-gold);
+    font-weight: bold;
+    margin-bottom: 3px;
+}
+
+.weekly-day {
+    font-size: 0.8rem;
+    color: #aaa;
+    margin-bottom: 8px;
+}
+
+.weekly-icon {
+    font-size: 2.5rem;
+    margin: 8px 0;
+}
+
+.weekly-weather {
+    font-size: 0.9rem;
+    color: var(--neon-cyan);
+    font-weight: bold;
+    margin-bottom: 8px;
+}
+
+.weekly-temp {
+    font-size: 1rem;
+    color: white;
+    font-weight: 800;
+    margin-bottom: 10px;
+}
+
+.weekly-info {
+    font-size: 0.75rem;
+    color: #aaa;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 8px;
+}

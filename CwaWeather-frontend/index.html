@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>鯊鯊天氣 | RM93</title>
+    <link rel="icon" type="image/png" href="./icon-v2.png">
+    <link rel="apple-touch-icon" href="./icon-v2.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="./icon-v2.png">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Electrolize&family=Noto+Sans+TC:wght@300;700;900&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="./style.css">
+</head>
+
+<body>
+    <div class="bubbles" id="bubbleContainer"></div>
+
+    <div id="loading" class="loading-screen">
+        <div class="sonar-emitter">
+            <div class="sonar-wave"></div>
+            <div class="sonar-wave"></div>
+            <div class="sonar-wave"></div>
+        </div>
+        <p style="color: var(--neon-cyan); font-weight: bold; margin-top: 120px; letter-spacing: 2px;">SHARK SCANNING...
+        </p>
+        <p style="color: var(--text-light); font-size: 0.8rem; margin-top: 10px;">正在偵測海域氣象...</p>
+    </div>
+
+    <div class="status-bar">
+        <div class="location-select-wrapper">
+            <select id="citySelect" class="location-select"></select>
+            <select id="townSelect" class="location-select town-select"></select>
+        </div>
+        <div id="updateTime" class="update-pill">SYNC...</div>
+    </div>
+
+    <h1 class="site-title">SHARK WEATHER</h1>
+
+    <div class="container" id="mainContent" style="display: none;">
+
+        <!-- 檢視切換按鈕 -->
+        <div class="view-toggle">
+            <button id="todayBtn" class="toggle-btn active" onclick="switchViewMode('today')">今日預報</button>
+            <button id="weeklyBtn" class="toggle-btn" onclick="switchViewMode('weekly')">一週預報</button>
+        </div>
+
+        <!-- 今日檢視 -->
+        <div id="todayView">
+            <div id="heroCard"></div>
+            <h3 class="section-title">聲納氣象預報</h3>
+            <div class="scroll-container" id="futureForecasts"></div>
+        </div>
+
+        <!-- 一週檢視 -->
+        <div id="weeklyView" style="display: none;">
+            <div class="chart-wrapper">
+                <canvas id="weeklyChart"></canvas>
+            </div>
+            <!-- 🌟 新增：降雨機率折線圖 -->
+            <div class="chart-wrapper">
+                <canvas id="weeklyRainChart"></canvas>
+            </div>
+            <div class="weekly-grid" id="weeklyForecasts"></div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <!-- 🌟 引入 suncalc 庫：計算日出日落時間 -->
+    <script src="https://cdn.jsdelivr.net/npm/suncalc@1.9.0/suncalc.js"></script>
+    <script src="./app.js"></script>
+</body>
+
+</html>
