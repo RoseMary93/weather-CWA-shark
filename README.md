@@ -4,7 +4,23 @@
 
 ---
 
-## 📋 專案概述
+## � 專案來源
+
+本專案是 Fork 自 [gonsakon](https://github.com/gonsakon) 的原始專案：
+- 🔗 **後端原始倉庫**: [CwaWeather-backend](https://github.com/gonsakon/CwaWeather-backend)
+- 🔗 **前端原始倉庫**: [CwaWeather-frontend](https://github.com/gonsakon/CwaWeather-frontend)
+
+### ✨ 新增/改進功能
+- 📅 **一周天氣的全部功能** - 完整的每日天氣預報展示
+- 📍 **GPS 定位功能** - 自動偵測使用者位置並顯示當地天氣
+- 🎨 改進的使用者介面設計
+- 📦 增強的功能集設定
+- 🎯 優化的樣式與 UX 體驗
+- 🔧 改進的配置管理
+
+---
+
+## �📋 專案概述
 
 本應用分為兩個主要部分：
 - **後端 (Backend)**: Express.js 伺服器，提供 RESTful API
@@ -295,16 +311,10 @@ CITY_DATASET_MAPPING = {
 
 ## 📄 授權
 
-本專案採用 **Personal Use License** 授權
+本專案採用 **MIT 許可證** 授權。詳見 [LICENSE.md](LICENSE.md)
 
-### 授權條款摘要
-- ✅ 允許個人學習和研究使用
-- ✅ 允許在個人開發環境中運行和測試
-- ❌ 禁止商業使用
-- ❌ 禁止公開分發或發佈
-- ❌ 禁止修改後發佈或銷售
-
-詳細授權內容請參考 [LICENSE.md](LICENSE.md) 檔案
+**原始專案**由 [gonsakon](https://github.com/gonsakon) 創建，也採用 MIT 許可證。  
+本專案在此基礎上進行改進和擴展。
 
 ---
 
@@ -314,6 +324,6 @@ CITY_DATASET_MAPPING = {
 
 ---
 
-**最後更新**: 2026 年 5 月 25 日  
+**最後更新**: 2026 年 5 月 27 日  
 **應用版本**: 1.0.0
 **開發者**: Jing ( RoseMary93 )
