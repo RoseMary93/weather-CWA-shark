@@ -1,37 +1,32 @@
-# Personal Use License
+# MIT License
 
-## 版權聲明
+Copyright (c) 2026 Jing (RoseMary93)
 
-© 2026 All Rights Reserved
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
 
-本專案及其所有代碼、文檔和資源的版權歸原作者所有。
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
 
-## 授權條款
-
-### 允許的行為
-- ✅ 個人學習和研究使用
-- ✅ 查看和理解源代碼
-- ✅ 在個人開發環境中運行和測試
-- ✅ 參考代碼實現方式進行學習
-
-### 禁止的行為
-- ❌ 商業使用（包括直接或間接的商業目的）
-- ❌ 公開分發或發佈
-- ❌ 修改後發佈或銷售
-- ❌ 用於商業軟體、SaaS 服務或任何營利活動
-- ❌ 移除或修改本授權聲明
-
-## 免責聲明
-
-本軟體按「原樣」提供，不提供任何明示或暗示的擔保，包括但不限於對適銷性、特定用途適用性和非侵權性的擔保。
-
-在任何情況下，作者均不對因使用本軟體引起的任何直接、間接、特殊、偶發或後果性損害承擔責任。
-
-## 聯繫方式
-
-如有任何關於授權的問題，請聯繫原作者。
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
 
 ---
 
-**版本**: 1.0  
-**生效日期**: 2026 年 5 月
+## 原始專案
+
+本專案是基於以下 MIT 授權的專案進行改進和擴展：
+
+- **CwaWeather-backend** - https://github.com/gonsakon/CwaWeather-backend
+- **CwaWeather-frontend** - https://github.com/gonsakon/CwaWeather-frontend
+
+感謝 [gonsakon](https://github.com/gonsakon) 的原始作品。
